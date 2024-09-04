@@ -1,0 +1,57 @@
+.container {
+	height: 515px;
+	width: 390px;
+	background: #fff;
+	padding: 40px 30px;
+	border-radius: 15px;
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.title {
+	font-size: 35px;
+	font-weight: 600;
+	text-align: center;
+}
+.radioControls {
+	display: flex;
+	margin: 30px 0 10px 0;
+	border: 1px solid lightgrey;
+	border-radius: 15px;
+	list-style-type: none;
+}
+.radioButton {
+	background: #fff;
+}
+.btn {
+	height: 50px;
+	width: 100%;
+	border: none;
+	border-radius: 15px;
+	text-align: center;
+	font-weight: 700;
+	cursor: pointer;
+}
+.selectedBtn {
+	color: #fff;
+	background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+}
+form {
+	margin-bottom: 40px;
+}
+.formInput {
+	margin-top: 20px;
+	height: 50px;
+	width: 100%;
+	outline: 1px solid lightgray;
+	padding: 0 15px;
+	border-radius: 15px;
+	border: none;
+	border-bottom-width: 2px;
+}
+input.formInput:focus {
+	outline-width: 2px;
+	outline-color: #004080;
+}
+input.formInput:not(:placeholder-shown):invalid {
+	outline-width: 2px;
+	outline-color: red;
+}
