@@ -29,10 +29,9 @@ const LoginForm = () => {
 				<InputField
 					classes={"formInput"}
 					type={"password"}
-					title="Password equal 'password'"
+					title="Enter you password"
 					placeholder={"Password"}
 					value={password}
-					pattern="password"
 					inputOnChange={(event) => setPassword(event.target.value)}
 				/>
 			</form>
