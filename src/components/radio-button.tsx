@@ -4,11 +4,9 @@ interface RadioButtonProps {
 	onSelect: React.MouseEventHandler<HTMLButtonElement>;
 }
 const RadioButton = ({ label, selected, onSelect }: RadioButtonProps) => (
-	<li className="radioButton btn">
+	<li className="radioSocket">
 		<button
-			className={`radioButton btn ${
-				selected ? "selectedBtn" : "unselectedBtn"
-			}`}
+			className={`btn radioButton  ${selected ? "selectedRadioBtn" : ""}`}
 			onClick={onSelect}
 		>
 			{label}

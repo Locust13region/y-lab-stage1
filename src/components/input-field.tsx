@@ -1,4 +1,5 @@
 interface InputFieldsProps {
+	name: string;
 	type: string;
 	placeholder: string;
 	title?: string;
@@ -8,6 +9,7 @@ interface InputFieldsProps {
 	classes: string;
 }
 const InputField = ({
+	name,
 	type,
 	title,
 	placeholder,
@@ -17,6 +19,7 @@ const InputField = ({
 	classes,
 }: InputFieldsProps) => (
 	<input
+		name={name}
 		required
 		autoComplete="off"
 		className={classes}

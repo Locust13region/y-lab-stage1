@@ -1,56 +1,54 @@
 import { useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
-import LoginForm from "./components/login-form";
+import LoginSignupForm from "./components/login-signup-form";
 import RadioButton from "./components/radio-button";
-import SignupForm from "./components/signup-form";
 
 function App() {
 	const [isLogin, setLogin] = useState(true);
-	const duration = 200;
 	return (
-		<>
+		<AnimatePresence initial={false}>
 			<div className="container">
-				<CSSTransition
-					in={isLogin}
-					timeout={duration}
-					classNames="fade"
+				<motion.h1
+					key={`${isLogin}`}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 0.5 }}
+					className="title"
 				>
-					<h1 className="title">{isLogin ? "Login Form" : "Sighup Form"}</h1>
-				</CSSTransition>
+					{isLogin ? "Login Form" : "Sighup Form"}
+				</motion.h1>
 				<ul className="radioControls">
-					<CSSTransition
-						in={isLogin}
-						timeout={duration}
-						classNames="fade"
-					>
-						<RadioButton
-							label="Login"
-							selected={isLogin}
-							onSelect={() => setLogin(true)}
+					{isLogin && (
+						<motion.div
+							className="movingBackground"
+							layoutId="background"
+							transition={{ type: "spring", stiffness: 300, damping: 30 }}
+							style={{ left: 0 }}
 						/>
-					</CSSTransition>
-					<CSSTransition
-						in={isLogin}
-						timeout={duration}
-						classNames="fade"
-					>
-						<RadioButton
-							label="Signup"
-							selected={!isLogin}
-							onSelect={() => setLogin(false)}
+					)}
+					{!isLogin && (
+						<motion.div
+							className="movingBackground"
+							layoutId="background"
+							transition={{ type: "spring", stiffness: 300, damping: 30 }}
+							style={{ left: "50%" }}
 						/>
-					</CSSTransition>
+					)}
+					<RadioButton
+						label="Login"
+						selected={isLogin}
+						onSelect={() => setLogin(true)}
+					/>
+					<RadioButton
+						label="Signup"
+						selected={!isLogin}
+						onSelect={() => setLogin(false)}
+					/>
 				</ul>
-				<CSSTransition
-					in={isLogin}
-					timeout={200}
-					classNames="fade"
-				>
-					{isLogin ? <LoginForm /> : <SignupForm />}
-				</CSSTransition>
+				<LoginSignupForm isLogin={isLogin} />
 			</div>
-		</>
+		</AnimatePresence>
 	);
 }
 
